@@ -1,7 +1,12 @@
 'use strict';
 
 var apn = require('apn')
-  , options = { production: false }
+  , fs = require('fs')
+  , options = {
+      production: false
+    , cert: fs.readFileSync(__dirname + '/cert.pem')
+    , key: fs.readFileSync(__dirname + '/key.pem')
+    }
   , apnConnection = new apn.Connection(options)
     // replace with your device id
   , token = '62aadff76df44261318ed16dfcd287ecd8b71cd50339f3592e2e27a9eede9558'
